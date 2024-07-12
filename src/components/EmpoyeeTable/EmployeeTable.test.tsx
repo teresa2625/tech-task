@@ -7,35 +7,38 @@ import {
 } from "@testing-library/react";
 import EmployeeTable from "./EmployeeTable";
 
-test("renders modal", async () => {
+test("renders loading", async () => {
   render(
     <EmployeeTable
-      loading={false}
-      employees={[
-        {
-          id: "",
-          name: "",
-          email: "",
-          phone: "",
-          occupation: "",
-          created: new Date(Date.now()),
-        },
-      ]}
+      loading={true}
+      employees={[]}
       handleEditEmployee={() => {}}
     />,
   );
-  const modal = screen.getByRole("dialog");
-  expect(modal).toBeInTheDocument();
+  const loadingText = screen.queryByText(/No Employees/i);
+  expect(loadingText).not.toBeInTheDocument();
 });
 
-test("renders form", async () => {
+test("renders empty table", async () => {
+  render(
+    <EmployeeTable
+      loading={false}
+      employees={[]}
+      handleEditEmployee={() => {}}
+    />,
+  );
+  const emptyTable = screen.getByText(/No Employees/i);
+  expect(emptyTable).toBeInTheDocument();
+});
+
+test("renders table with one row", async () => {
   render(
     <EmployeeTable
       loading={false}
       employees={[
         {
           id: "",
-          name: "",
+          name: "testName",
           email: "",
           phone: "",
           occupation: "",
@@ -45,9 +48,9 @@ test("renders form", async () => {
       handleEditEmployee={() => {}}
     />,
   );
-  const nameText = screen.getAllByText(/Name/i);
-  expect(nameText.length).toBe(2);
+  const nameText = screen.getAllByText("testName");
+  expect(nameText.length).toBe(1);
 
-  const saveButton = screen.getByRole("button", { name: "Save" });
-  expect(saveButton).toBeInTheDocument();
+  const editButton = screen.getByRole("button", { name: "Edit" });
+  expect(editButton).toBeInTheDocument();
 });
