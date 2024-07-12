@@ -2,20 +2,20 @@ import { EmployeeLineItem } from "../interfaces/employees";
 import * as ExcelJs from "exceljs";
 
 export const writeEmployeesToExcel = async (
-  employees: EmployeeLineItem[]
+  employees: EmployeeLineItem[],
 ): Promise<boolean> => {
   return new Promise((resolve, reject) => {
     (async () => {
       try {
         const workbook = new ExcelJs.Workbook();
         const workSheet = workbook.addWorksheet("Employees");
-        workSheet.columns = ["id", "name", "phone", "occuplaystation"];
-        workSheet.addRow(["id", "name", "phone", "occuplaystation"]);
+        workSheet.columns = ["ID", "Name", "Email", "Phone", "Occupation"];
+        workSheet.addRow(["ID", "Name", "Email", "Phone", "Occupation"]);
         for (const employee of employees) {
           workSheet.addRow([
             employee.id,
             employee.name,
-            employee.phone,
+            employee.email,
             employee.phone,
             employee.occupation,
           ]);

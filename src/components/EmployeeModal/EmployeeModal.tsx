@@ -10,7 +10,7 @@ interface EmployeeModalProps {
   existingEmployee?: EmployeeLineItem;
   createEmployee: (
     employee: EmployeeLineItem,
-    assignEmployee?: boolean
+    assignEmployee?: boolean,
   ) => void;
   updateEmployee: (employee: EmployeeLineItem) => void;
   handleClose: () => void;

@@ -8,7 +8,7 @@ export const useExcelExport = () => {
   const [error, setError] = React.useState<string | null>(null);
 
   const exportExployees = async (
-    employees: EmployeeLineItem[]
+    employees: EmployeeLineItem[],
   ): Promise<void> => {
     try {
       setIsExporting(true);

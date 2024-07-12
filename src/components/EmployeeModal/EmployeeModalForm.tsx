@@ -35,6 +35,7 @@ export const EmployeeForm = ({
         name: values.name,
         email: values.email,
         phone: values.phone,
+        occupation: values.occupation,
       });
     },
   });
@@ -58,9 +59,9 @@ export const EmployeeForm = ({
         </Grid>
         <Grid item xs={6} sm={6}>
           <TextField
-            id="emailAddress"
-            name="emailAddress"
-            label="email"
+            id="email"
+            name="email"
+            label="Email"
             fullWidth
             disabled={loading}
             onChange={formik.handleChange}
@@ -74,7 +75,7 @@ export const EmployeeForm = ({
           <TextField
             id="phone"
             name="phone"
-            label="phone"
+            label="Phone"
             fullWidth
             disabled={loading}
             onChange={formik.handleChange}
@@ -88,7 +89,7 @@ export const EmployeeForm = ({
           <TextField
             id="occupation"
             name="occupation"
-            label="occupation"
+            label="Occupation"
             fullWidth
             disabled={loading}
             onChange={formik.handleChange}

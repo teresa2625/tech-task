@@ -17,6 +17,16 @@ interface EmployeeTableProps {
   employees: EmployeeLineItem[];
   handleEditEmployee: (employee: EmployeeLineItem) => void;
 }
+// TODO: unit tests
+// 1. duplicate users
+// 2. constants
+// 3. remove user
+// 4. sort functions
+// 5. pagination
+// 6. search function
+// 7. main bg
+// 8. head banner
+// 9. side bar
 
 export const EmployeeTable = ({
   loading,
@@ -67,3 +77,5 @@ export const EmployeeTable = ({
     </Grid>
   );
 };
+
+export default EmployeeTable;

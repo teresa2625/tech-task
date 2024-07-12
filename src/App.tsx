@@ -30,7 +30,6 @@ function App() {
             onClick={async () => {
               if (employees.length) {
                 await writeEmployeesToExcel(employees);
-                await writeEmployeesToExcel(employees);
               } else {
                 alert("No employees to export");
               }
