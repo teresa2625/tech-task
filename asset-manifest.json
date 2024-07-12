@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/tech-task/static/js/main.75a2136f.js",
+    "static/js/453.937049a8.chunk.js": "/tech-task/static/js/453.937049a8.chunk.js",
+    "index.html": "/tech-task/index.html",
+    "main.75a2136f.js.map": "/tech-task/static/js/main.75a2136f.js.map",
+    "453.937049a8.chunk.js.map": "/tech-task/static/js/453.937049a8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.75a2136f.js"
+  ]
+}
