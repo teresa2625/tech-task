@@ -10,8 +10,13 @@ function App() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [selectedEmployee, setSelectedEmployee] =
     React.useState<EmployeeLineItem>();
-  const { employees, createEmployee, updateEmployee, isLoading } =
-    useEmployee();
+  const {
+    employees,
+    createEmployee,
+    updateEmployee,
+    isLoading,
+    removeEmployee,
+  } = useEmployee();
 
   return (
     <Box sx={{ padding: 2 }}>
@@ -55,6 +60,7 @@ function App() {
           setIsModalOpen(true);
           setSelectedEmployee(employee);
         }}
+        removeEmployee={removeEmployee}
       />
       {isModalOpen ? (
         <EmployeeModal

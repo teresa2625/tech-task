@@ -49,6 +49,23 @@ export const useEmployee = () => {
     }
   };
 
+  const removeEmployee = async (employee: EmployeeLineItem): Promise<void> => {
+    try {
+      setIsLoading(true);
+      await sleep(2000);
+      console.log(
+        employees.filter((existEmployee) => existEmployee.id !== employee.id),
+      );
+      setEmployees(
+        employees.filter((existEmployee) => existEmployee.id !== employee.id),
+      );
+    } catch (e: any) {
+      setError("Could not update employee");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   React.useEffect(() => {
     listEmployees();
   }, []);
@@ -57,6 +74,7 @@ export const useEmployee = () => {
     employees,
     createEmployee,
     updateEmployee,
+    removeEmployee,
     isLoading,
     error,
   };

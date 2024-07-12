@@ -13,6 +13,7 @@ test("renders loading", async () => {
       loading={true}
       employees={[]}
       handleEditEmployee={() => {}}
+      removeEmployee={() => {}}
     />,
   );
   const loadingText = screen.queryByText(/No Employees/i);
@@ -25,6 +26,7 @@ test("renders empty table", async () => {
       loading={false}
       employees={[]}
       handleEditEmployee={() => {}}
+      removeEmployee={() => {}}
     />,
   );
   const emptyTable = screen.getByText(/No Employees/i);
@@ -46,6 +48,7 @@ test("renders table with one row", async () => {
         },
       ]}
       handleEditEmployee={() => {}}
+      removeEmployee={() => {}}
     />,
   );
   const nameText = screen.getAllByText("testName");

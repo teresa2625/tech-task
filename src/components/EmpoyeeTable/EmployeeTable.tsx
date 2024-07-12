@@ -16,6 +16,7 @@ interface EmployeeTableProps {
   loading: boolean;
   employees: EmployeeLineItem[];
   handleEditEmployee: (employee: EmployeeLineItem) => void;
+  removeEmployee: (employee: EmployeeLineItem) => void;
 }
 // TODO: unit tests
 // 1. duplicate users
@@ -32,6 +33,7 @@ export const EmployeeTable = ({
   loading,
   employees,
   handleEditEmployee,
+  removeEmployee,
 }: EmployeeTableProps) => {
   return (
     <Grid item xs={12} md={12}>
@@ -65,6 +67,7 @@ export const EmployeeTable = ({
                   <EmployeeTableRow
                     employee={row}
                     handleEditEmployee={handleEditEmployee}
+                    removeEmployee={removeEmployee}
                   />
                 );
               })}
