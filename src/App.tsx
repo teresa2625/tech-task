@@ -1,5 +1,14 @@
 import React from "react";
-import { Box, Button, Typography } from "@mui/material";
+import {
+  Alert,
+  AppBar,
+  Box,
+  Button,
+  IconButton,
+  Snackbar,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import { EmployeeTable } from "./components/EmpoyeeTable/EmployeeTable";
 import { EmployeeLineItem } from "./interfaces/employees";
 import { useEmployee } from "./hooks/useEmployee";
@@ -8,6 +17,7 @@ import { writeEmployeesToExcel } from "./utils/excel";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [noEmployeeAlert, setNoEmployeeAlert] = React.useState(false);
   const [selectedEmployee, setSelectedEmployee] =
     React.useState<EmployeeLineItem>();
   const {
@@ -20,6 +30,18 @@ function App() {
 
   return (
     <Box sx={{ padding: 2 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          ></IconButton>
+          <Typography variant="h5">Social Pro Tech Task</Typography>
+        </Toolbar>
+      </AppBar>
       <Box
         sx={{
           display: "flex",
@@ -27,7 +49,21 @@ function App() {
           alignItems: "center",
         }}
       >
-        <Typography variant="h5">Social Pro Tech Task</Typography>
+        {/* <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            >
+            </IconButton>
+            <Typography variant="h5">Social Pro Tech Task</Typography>
+          </Toolbar>
+        </AppBar> */}
+        {/* <Typography variant="h5">Social Pro Tech Task</Typography> */}
+        {/* <Toolbar /> */}
         <Box>
           <Button
             color="primary"
@@ -36,7 +72,7 @@ function App() {
               if (employees.length) {
                 await writeEmployeesToExcel(employees);
               } else {
-                alert("No employees to export");
+                setNoEmployeeAlert(true);
               }
             }}
           >
@@ -74,6 +110,28 @@ function App() {
           }}
         />
       ) : undefined}
+      {noEmployeeAlert && (
+        <Snackbar
+          open={noEmployeeAlert}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
+          onClose={() => {
+            setNoEmployeeAlert(false);
+          }}
+        >
+          <Alert
+            onClose={() => {
+              setNoEmployeeAlert(false);
+            }}
+            severity="error"
+            sx={{ width: "100%" }}
+          >
+            No employees to export
+          </Alert>
+        </Snackbar>
+      )}
     </Box>
   );
 }

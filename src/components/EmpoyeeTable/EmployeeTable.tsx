@@ -11,7 +11,7 @@ import { EmployeeTableRow } from "./EmployeeTableRow";
 import { EmployeeTableRowSkeleton } from "./EmployeeTableRowSkeleton";
 import { NoRows } from "./NoRows";
 import { EmployeeLineItem } from "../../interfaces/employees";
-import { StyledCell } from "../../styles/modal";
+import { StyledCell, StyledHeaders } from "../../styles/modal";
 
 interface EmployeeTableProps {
   loading: boolean;
@@ -41,19 +41,19 @@ export const EmployeeTable = ({
         <TableHead>
           <TableRow>
             <StyledCell>
-              <Typography>Name</Typography>
+              <StyledHeaders>Name</StyledHeaders>
             </StyledCell>
             <StyledCell>
-              <Typography>Email</Typography>
+              <StyledHeaders>Email</StyledHeaders>
             </StyledCell>
             <StyledCell>
-              <Typography>Phone</Typography>
+              <StyledHeaders>Phone</StyledHeaders>
             </StyledCell>
             <StyledCell>
-              <Typography>Occupation</Typography>
+              <StyledHeaders>Occupation</StyledHeaders>
             </StyledCell>
             <TableCell>
-              <Typography>Actions</Typography>
+              <StyledHeaders>Actions</StyledHeaders>
             </TableCell>
           </TableRow>
         </TableHead>
