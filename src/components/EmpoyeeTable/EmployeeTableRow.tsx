@@ -35,7 +35,7 @@ export const EmployeeTableRow = ({
         </Tooltip>
         <Tooltip placement="top" title="Remove" TransitionComponent={Zoom}>
           <IconButton
-            color="primary"
+            color="error"
             size="large"
             onClick={() => removeEmployee(employee)}
           >

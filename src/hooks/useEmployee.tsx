@@ -53,14 +53,11 @@ export const useEmployee = () => {
     try {
       setIsLoading(true);
       await sleep(2000);
-      console.log(
-        employees.filter((existEmployee) => existEmployee.id !== employee.id),
-      );
       setEmployees(
         employees.filter((existEmployee) => existEmployee.id !== employee.id),
       );
     } catch (e: any) {
-      setError("Could not update employee");
+      setError("Could not remove employee");
     } finally {
       setIsLoading(false);
     }

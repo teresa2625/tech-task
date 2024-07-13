@@ -11,6 +11,7 @@ import { EmployeeTableRow } from "./EmployeeTableRow";
 import { EmployeeTableRowSkeleton } from "./EmployeeTableRowSkeleton";
 import { NoRows } from "./NoRows";
 import { EmployeeLineItem } from "../../interfaces/employees";
+import { StyledCell } from "../../styles/modal";
 
 interface EmployeeTableProps {
   loading: boolean;
@@ -21,7 +22,6 @@ interface EmployeeTableProps {
 // TODO: unit tests
 // 1. duplicate users
 // 2. constants
-// 3. remove user
 // 4. sort functions
 // 5. pagination
 // 6. search function
@@ -40,18 +40,18 @@ export const EmployeeTable = ({
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>
+            <StyledCell>
               <Typography>Name</Typography>
-            </TableCell>
-            <TableCell>
+            </StyledCell>
+            <StyledCell>
               <Typography>Email</Typography>
-            </TableCell>
-            <TableCell>
+            </StyledCell>
+            <StyledCell>
               <Typography>Phone</Typography>
-            </TableCell>
-            <TableCell>
+            </StyledCell>
+            <StyledCell>
               <Typography>Occupation</Typography>
-            </TableCell>
+            </StyledCell>
             <TableCell>
               <Typography>Actions</Typography>
             </TableCell>
