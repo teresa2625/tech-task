@@ -4,6 +4,7 @@ import {
   AppBar,
   Box,
   Button,
+  Divider,
   IconButton,
   Snackbar,
   Toolbar,
@@ -14,6 +15,7 @@ import { EmployeeLineItem } from "./interfaces/employees";
 import { useEmployee } from "./hooks/useEmployee";
 import EmployeeModal from "./components/EmployeeModal/EmployeeModal";
 import { writeEmployeesToExcel } from "./utils/excel";
+import { StyledButtonBox } from "./styles/modal";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -30,7 +32,7 @@ function App() {
 
   return (
     <Box sx={{ padding: 2 }}>
-      <AppBar position="static">
+      <AppBar position="sticky">
         <Toolbar>
           <IconButton
             size="large"
@@ -42,31 +44,13 @@ function App() {
           <Typography variant="h5">Social Pro Tech Task</Typography>
         </Toolbar>
       </AppBar>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        {/* <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
-            </IconButton>
-            <Typography variant="h5">Social Pro Tech Task</Typography>
-          </Toolbar>
-        </AppBar> */}
-        {/* <Typography variant="h5">Social Pro Tech Task</Typography> */}
-        {/* <Toolbar /> */}
-        <Box>
+      <Divider />
+      <Box>
+        <StyledButtonBox
+        >
           <Button
             color="primary"
+            variant="outlined"
             sx={{ marginRight: 1 }}
             onClick={async () => {
               if (employees.length) {
@@ -80,6 +64,7 @@ function App() {
           </Button>
           <Button
             color="primary"
+            variant="contained"
             onClick={() => {
               setSelectedEmployee(undefined);
               setIsModalOpen(true);
@@ -87,7 +72,7 @@ function App() {
           >
             Add
           </Button>
-        </Box>
+        </StyledButtonBox>
       </Box>
       <EmployeeTable
         loading={isLoading}

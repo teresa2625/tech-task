@@ -1,5 +1,5 @@
 
-import { DialogTitle, DialogContent, TableCell, Typography } from "@mui/material";
+import { DialogTitle, DialogContent, TableCell, Typography, Box } from "@mui/material";
 import styled from "styled-components";
 
 export const StyledCell = styled(TableCell)`
@@ -29,4 +29,11 @@ export const StyledDialogContent = styled(DialogContent)`
 
 export const StyledHeaders = styled(Typography)`
   font-weight: bold;
+`;
+
+export const StyledButtonBox = styled(Box)`
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin: 24px 0px;
 `;
