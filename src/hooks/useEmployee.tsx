@@ -2,6 +2,8 @@ import * as React from "react";
 import { EmployeeLineItem } from "../interfaces/employees";
 import { sleep } from "../utils/sleep";
 
+// TODO: Unit tests
+
 export const useEmployee = () => {
   const [employees, setEmployees] = React.useState<EmployeeLineItem[]>([]);
   const [isDuplicated, setIsDuplicated] = React.useState<boolean>(false);

@@ -1,5 +1,5 @@
 
-import { DialogTitle, DialogContent, TableCell, Typography, Box } from "@mui/material";
+import { DialogTitle, TableCell, Typography, Box } from "@mui/material";
 import styled from "styled-components";
 
 export const StyledCell = styled(TableCell)`

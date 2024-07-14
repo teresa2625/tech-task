@@ -6,6 +6,8 @@ type SortConfig = {
   direction: "asc" | "desc";
 };
 
+// TODO: Improve the sorting function since there would be more data type and add unit tests for this
+
 const useSortableData = <T extends { [key: string]: any }>(
   employeeDatas: T[],
   config: SortConfig | null = null,

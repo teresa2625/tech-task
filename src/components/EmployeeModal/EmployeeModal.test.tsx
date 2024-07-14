@@ -1,11 +1,10 @@
 import {
-  act,
-  fireEvent,
   render,
   screen,
-  waitFor,
 } from "@testing-library/react";
 import EmployeeModal from "./EmployeeModal";
+
+// TODO: Add more test cases
 
 test("renders modal", async () => {
   render(

@@ -23,8 +23,9 @@ interface EmployeeTableProps {
   removeEmployee: (employee: EmployeeLineItem) => void;
   sortEmployee: (employee: EmployeeLineItem[]) => void;
 }
-// TODO: unit tests
-// 1. duplicate users
+
+// TODO: I may add the edit function to inline instead of the pop up modal
+// Improve the table design
 
 export const EmployeeTable = ({
   loading,

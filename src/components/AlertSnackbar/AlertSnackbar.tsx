@@ -6,6 +6,8 @@ interface AlertSnackbarProps {
   handleClose: (isClose: boolean) => void;
 }
 
+// TODO: Unit test
+
 export default function AlertSnackbar({
   isOpen,
   message,

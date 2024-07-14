@@ -58,6 +58,7 @@ export const EmployeeForm = ({
           />
         </Grid>
         <Grid style={{ marginTop: "48px" }} item xs={6} sm={6}>
+          {/* TODO: Add Regex check */}
           <TextField
             id="email"
             name="email"
@@ -72,6 +73,7 @@ export const EmployeeForm = ({
           />
         </Grid>
         <Grid item xs={6} sm={6}>
+          {/* TODO: Add Regex check */}
           <TextField
             id="phone"
             name="phone"
@@ -86,6 +88,7 @@ export const EmployeeForm = ({
           />
         </Grid>
         <Grid item xs={6} sm={6}>
+          {/* TODO: maybe get a list of occupation and make it as a drop down */}
           <TextField
             id="occupation"
             name="occupation"

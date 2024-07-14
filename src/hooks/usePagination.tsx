@@ -16,6 +16,8 @@ interface PaginationActions {
   setItemsPerPage: (itemsPerPage: number) => void;
 }
 
+// TODO: Unit tests
+
 const usePagination = ({
   initialPage = 0,
   initialPerPage = 10,

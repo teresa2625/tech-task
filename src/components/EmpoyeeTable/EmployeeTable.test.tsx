@@ -1,12 +1,10 @@
 import {
-  act,
-  fireEvent,
   render,
   screen,
-  waitFor,
 } from "@testing-library/react";
 import EmployeeTable from "./EmployeeTable";
-import { EmployeeLineItem } from "../../interfaces/employees";
+
+// TODO: Add more test cases
 
 test("renders loading", async () => {
   render(
