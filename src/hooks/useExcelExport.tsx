@@ -3,12 +3,14 @@ import { EmployeeLineItem } from "../interfaces/employees";
 import { sleep } from "../utils/sleep";
 import { writeEmployeesToExcel } from "../utils/excel";
 
+// TODO: Unit tests
+
 export const useExcelExport = () => {
   const [isExporting, setIsExporting] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string | null>(null);
 
   const exportExployees = async (
-    employees: EmployeeLineItem[]
+    employees: EmployeeLineItem[],
   ): Promise<void> => {
     try {
       setIsExporting(true);

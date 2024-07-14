@@ -35,6 +35,7 @@ export const EmployeeForm = ({
         name: values.name,
         email: values.email,
         phone: values.phone,
+        occupation: values.occupation,
       });
     },
   });
@@ -42,7 +43,7 @@ export const EmployeeForm = ({
   return (
     <form onSubmit={formik.handleSubmit}>
       <Grid container spacing={3}>
-        <Grid item xs={6} sm={6}>
+        <Grid style={{ marginTop: "48px" }} item xs={6} sm={6}>
           <TextField
             id="name"
             name="name"
@@ -56,11 +57,12 @@ export const EmployeeForm = ({
             helperText={formik.touched.name ? formik.errors.name : ""}
           />
         </Grid>
-        <Grid item xs={6} sm={6}>
+        <Grid style={{ marginTop: "48px" }} item xs={6} sm={6}>
+          {/* TODO: Add Regex check */}
           <TextField
-            id="emailAddress"
-            name="emailAddress"
-            label="email"
+            id="email"
+            name="email"
+            label="Email"
             fullWidth
             disabled={loading}
             onChange={formik.handleChange}
@@ -71,10 +73,11 @@ export const EmployeeForm = ({
           />
         </Grid>
         <Grid item xs={6} sm={6}>
+          {/* TODO: Add Regex check */}
           <TextField
             id="phone"
             name="phone"
-            label="phone"
+            label="Phone"
             fullWidth
             disabled={loading}
             onChange={formik.handleChange}
@@ -85,10 +88,11 @@ export const EmployeeForm = ({
           />
         </Grid>
         <Grid item xs={6} sm={6}>
+          {/* TODO: maybe get a list of occupation and make it as a drop down */}
           <TextField
             id="occupation"
             name="occupation"
-            label="occupation"
+            label="Occupation"
             fullWidth
             disabled={loading}
             onChange={formik.handleChange}

@@ -1,38 +1,64 @@
 import React from "react";
-import { Box, Button, Typography } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Button,
+  Divider,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import { EmployeeTable } from "./components/EmpoyeeTable/EmployeeTable";
 import { EmployeeLineItem } from "./interfaces/employees";
 import { useEmployee } from "./hooks/useEmployee";
 import EmployeeModal from "./components/EmployeeModal/EmployeeModal";
 import { writeEmployeesToExcel } from "./utils/excel";
+import { StyledButtonBox } from "./styles/modal";
+import AlertSnackbar from "./components/AlertSnackbar/AlertSnackbar";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [noEmployeeAlert, setNoEmployeeAlert] = React.useState(false);
   const [selectedEmployee, setSelectedEmployee] =
     React.useState<EmployeeLineItem>();
-  const { employees, createEmployee, updateEmployee, isLoading } =
-    useEmployee();
+  const {
+    employees,
+    createEmployee,
+    updateEmployee,
+    isLoading,
+    removeEmployee,
+    setIsDuplicated,
+    sortEmployee,
+    isDuplicated,
+  } = useEmployee();
+  console.log("isDuplicated", isDuplicated);
 
   return (
     <Box sx={{ padding: 2 }}>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <Typography variant="h5">Social Pro Tech Task</Typography>
-        <Box>
+      <AppBar position="sticky">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          ></IconButton>
+          <Typography variant="h5">Social Pro Tech Task</Typography>
+        </Toolbar>
+      </AppBar>
+      <Divider />
+      <Box>
+        <StyledButtonBox>
           <Button
             color="primary"
+            variant="outlined"
             sx={{ marginRight: 1 }}
             onClick={async () => {
               if (employees.length) {
                 await writeEmployeesToExcel(employees);
-                await writeEmployeesToExcel(employees);
               } else {
-                alert("No employees to export");
+                setNoEmployeeAlert(true);
               }
             }}
           >
@@ -40,6 +66,7 @@ function App() {
           </Button>
           <Button
             color="primary"
+            variant="contained"
             onClick={() => {
               setSelectedEmployee(undefined);
               setIsModalOpen(true);
@@ -47,7 +74,7 @@ function App() {
           >
             Add
           </Button>
-        </Box>
+        </StyledButtonBox>
       </Box>
       <EmployeeTable
         loading={isLoading}
@@ -56,6 +83,8 @@ function App() {
           setIsModalOpen(true);
           setSelectedEmployee(employee);
         }}
+        removeEmployee={removeEmployee}
+        sortEmployee={sortEmployee}
       />
       {isModalOpen ? (
         <EmployeeModal
@@ -69,6 +98,20 @@ function App() {
           }}
         />
       ) : undefined}
+      {noEmployeeAlert && (
+        <AlertSnackbar
+          isOpen={noEmployeeAlert}
+          handleClose={setNoEmployeeAlert}
+          message="No employees to export"
+        ></AlertSnackbar>
+      )}
+      {isDuplicated && (
+        <AlertSnackbar
+          isOpen={isDuplicated}
+          handleClose={setIsDuplicated}
+          message="This employee is already in the list"
+        ></AlertSnackbar>
+      )}
     </Box>
   );
 }
