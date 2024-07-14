@@ -6,6 +6,7 @@ import {
   waitFor,
 } from "@testing-library/react";
 import EmployeeTable from "./EmployeeTable";
+import { EmployeeLineItem } from "../../interfaces/employees";
 
 test("renders loading", async () => {
   render(
@@ -14,6 +15,7 @@ test("renders loading", async () => {
       employees={[]}
       handleEditEmployee={() => {}}
       removeEmployee={() => {}}
+      sortEmployee={() => {}}
     />,
   );
   const loadingText = screen.queryByText(/No Employees/i);
@@ -27,6 +29,7 @@ test("renders empty table", async () => {
       employees={[]}
       handleEditEmployee={() => {}}
       removeEmployee={() => {}}
+      sortEmployee={() => {}}
     />,
   );
   const emptyTable = screen.getByText(/No Employees/i);
@@ -49,6 +52,7 @@ test("renders table with one row", async () => {
       ]}
       handleEditEmployee={() => {}}
       removeEmployee={() => {}}
+      sortEmployee={() => {}}
     />,
   );
   const nameText = screen.getAllByText("testName");

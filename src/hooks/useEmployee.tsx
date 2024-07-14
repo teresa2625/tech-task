@@ -63,6 +63,20 @@ export const useEmployee = () => {
     }
   };
 
+  const sortEmployee = async (
+    sortedEmployees: EmployeeLineItem[],
+  ): Promise<void> => {
+    try {
+      setIsLoading(true);
+      await sleep(2000);
+      setEmployees(sortedEmployees);
+    } catch (e: any) {
+      setError("Could not set sorted employee");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   React.useEffect(() => {
     listEmployees();
   }, []);
@@ -72,6 +86,7 @@ export const useEmployee = () => {
     createEmployee,
     updateEmployee,
     removeEmployee,
+    sortEmployee,
     isLoading,
     error,
   };

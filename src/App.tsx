@@ -28,6 +28,7 @@ function App() {
     updateEmployee,
     isLoading,
     removeEmployee,
+    sortEmployee,
   } = useEmployee();
 
   return (
@@ -46,8 +47,7 @@ function App() {
       </AppBar>
       <Divider />
       <Box>
-        <StyledButtonBox
-        >
+        <StyledButtonBox>
           <Button
             color="primary"
             variant="outlined"
@@ -82,6 +82,7 @@ function App() {
           setSelectedEmployee(employee);
         }}
         removeEmployee={removeEmployee}
+        sortEmployee={sortEmployee}
       />
       {isModalOpen ? (
         <EmployeeModal
@@ -102,12 +103,12 @@ function App() {
             vertical: "top",
             horizontal: "center",
           }}
-          onClose={() => {
+          onClose={(): void => {
             setNoEmployeeAlert(false);
           }}
         >
           <Alert
-            onClose={() => {
+            onClose={(): void => {
               setNoEmployeeAlert(false);
             }}
             severity="error"
