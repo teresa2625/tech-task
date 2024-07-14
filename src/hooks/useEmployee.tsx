@@ -4,6 +4,7 @@ import { sleep } from "../utils/sleep";
 
 export const useEmployee = () => {
   const [employees, setEmployees] = React.useState<EmployeeLineItem[]>([]);
+  const [isDuplicated, setIsDuplicated] = React.useState<boolean>(false);
   const [isLoading, setIsLoading] = React.useState<boolean>(true);
   const [error, setError] = React.useState<string | null>(null);
 
@@ -23,7 +24,11 @@ export const useEmployee = () => {
     try {
       setIsLoading(true);
       await sleep(2000);
-      setEmployees([...employees, { ...employee }]);
+      if (employees.length) {
+        checkDuplicateEmployee(employee);
+      } else {
+        setEmployees([...employees, { ...employee }]);
+      }
     } catch (e: any) {
       setError("Could not create employee");
     } finally {
@@ -77,6 +82,30 @@ export const useEmployee = () => {
     }
   };
 
+  const checkDuplicateEmployee = async (
+    employee: EmployeeLineItem,
+  ): Promise<void> => {
+    try {
+      setIsLoading(true);
+      if (
+        employees.filter(
+          (item) =>
+            item.name === employee.name &&
+            (item.email === employee.email || item.phone === employee.phone),
+        ).length
+      ) {
+        setIsDuplicated(true);
+        await sleep(2000);
+      } else {
+        setEmployees([...employees, { ...employee }]);
+      }
+    } catch (e: any) {
+      setError("Could not set sorted employee");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   React.useEffect(() => {
     listEmployees();
   }, []);
@@ -87,6 +116,8 @@ export const useEmployee = () => {
     updateEmployee,
     removeEmployee,
     sortEmployee,
+    setIsDuplicated,
+    isDuplicated,
     isLoading,
     error,
   };

@@ -4,7 +4,7 @@ import {
   EmployeeLineItem,
 } from "../../interfaces/employees";
 import { EmployeeForm } from "./EmployeeModalForm";
-import { StyledDialogContent, StyledDialogTitle } from "../../styles/modal";
+import { StyledDialogTitle } from "../../styles/modal";
 
 interface EmployeeModalProps {
   loading: boolean;
@@ -27,7 +27,7 @@ export default function EmployeeModal({
   return (
     <Dialog fullWidth open onClose={handleClose}>
       <StyledDialogTitle>Add Employee</StyledDialogTitle>
-      <StyledDialogContent>
+      <DialogContent>
         <EmployeeForm
           loading={loading}
           employee={existingEmployee || createDefaultEmployee()}
@@ -40,7 +40,7 @@ export default function EmployeeModal({
             handleClose();
           }}
         />
-      </StyledDialogContent>
+      </DialogContent>
     </Dialog>
   );
 }

@@ -23,10 +23,6 @@ export const StyledDialogTitle = styled(DialogTitle)`
   color: #fff;
 `;
 
-export const StyledDialogContent = styled(DialogContent)`
-  margin-top: 48px;
-`;
-
 export const StyledHeaders = styled(Typography)`
   font-weight: bold;
 `;

@@ -16,6 +16,7 @@ import { useEmployee } from "./hooks/useEmployee";
 import EmployeeModal from "./components/EmployeeModal/EmployeeModal";
 import { writeEmployeesToExcel } from "./utils/excel";
 import { StyledButtonBox } from "./styles/modal";
+import AlertSnackbar from "./components/AlertSnackbar/AlertSnackbar";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -28,8 +29,11 @@ function App() {
     updateEmployee,
     isLoading,
     removeEmployee,
+    setIsDuplicated,
     sortEmployee,
+    isDuplicated,
   } = useEmployee();
+  console.log("isDuplicated", isDuplicated);
 
   return (
     <Box sx={{ padding: 2 }}>
@@ -97,26 +101,18 @@ function App() {
         />
       ) : undefined}
       {noEmployeeAlert && (
-        <Snackbar
-          open={noEmployeeAlert}
-          anchorOrigin={{
-            vertical: "top",
-            horizontal: "center",
-          }}
-          onClose={(): void => {
-            setNoEmployeeAlert(false);
-          }}
-        >
-          <Alert
-            onClose={(): void => {
-              setNoEmployeeAlert(false);
-            }}
-            severity="error"
-            sx={{ width: "100%" }}
-          >
-            No employees to export
-          </Alert>
-        </Snackbar>
+        <AlertSnackbar
+          isOpen={noEmployeeAlert}
+          handleClose={setNoEmployeeAlert}
+          message="No employees to export"
+        ></AlertSnackbar>
+      )}
+      {isDuplicated && (
+        <AlertSnackbar
+          isOpen={isDuplicated}
+          handleClose={setIsDuplicated}
+          message="This employee is already in the list"
+        ></AlertSnackbar>
       )}
     </Box>
   );

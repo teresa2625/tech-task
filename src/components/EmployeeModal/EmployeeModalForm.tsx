@@ -43,7 +43,7 @@ export const EmployeeForm = ({
   return (
     <form onSubmit={formik.handleSubmit}>
       <Grid container spacing={3}>
-        <Grid item xs={6} sm={6}>
+        <Grid style={{ marginTop: "48px" }} item xs={6} sm={6}>
           <TextField
             id="name"
             name="name"
@@ -57,7 +57,7 @@ export const EmployeeForm = ({
             helperText={formik.touched.name ? formik.errors.name : ""}
           />
         </Grid>
-        <Grid item xs={6} sm={6}>
+        <Grid style={{ marginTop: "48px" }} item xs={6} sm={6}>
           <TextField
             id="email"
             name="email"
